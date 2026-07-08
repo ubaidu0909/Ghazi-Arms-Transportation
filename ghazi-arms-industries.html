@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghazi Arms Industries — Licensed Arms Transport</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111316;
+    --panel: #161a1f;
+    --border: #2a2f36;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-dim: #7a6230;
+    --red: #b02a2a;
+    --white: #f0ece4;
+    --grey: #8a8f96;
+    --light: #c8cdd4;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-text .name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .logo-text .tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--grey);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  nav {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .btn-nav {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 9px 22px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .btn-nav:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(176,42,42,0.08) 0%, transparent 60%),
+      linear-gradient(135deg, #0a0a0a 0%, #0f1217 50%, #0a0c0e 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 70% at 60% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 120px 80px 80px;
+    max-width: 720px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.7;
+    margin-top: 24px;
+    max-width: 520px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-route {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .city {
+    text-align: center;
+  }
+
+  .city-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .city-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  .route-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+    position: relative;
+    max-width: 160px;
+  }
+
+  .route-line::after {
+    content: '▶';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    font-size: 12px;
+    background: var(--black);
+    padding: 0 4px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-stats {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .stat {
+    text-align: right;
+    border-right: 2px solid var(--gold);
+    padding-right: 20px;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 68px);
+    letter-spacing: 2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--grey);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  /* ─── SERVICES ─── */
+  #services {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .service-card {
+    background: var(--panel);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+  }
+
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { background: #1a1e24; }
+
+  .service-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    padding: 3px 10px;
+  }
+
+  /* ─── WHY US ─── */
+  #why {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 80px;
+  }
+
+  .why-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .why-card-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 75%;
+    height: 75%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px;
+    overflow: hidden;
+  }
+
+  .why-card-main::after {
+    content: '🛡️';
+    position: absolute;
+    top: 36px; right: 36px;
+    font-size: 64px;
+    opacity: 0.15;
+  }
+
+  .why-card-main .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .why-card-main .big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .why-card-accent {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 55%;
+    height: 55%;
+    background: var(--gold);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .why-card-accent .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .why-card-accent .text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.7);
+    text-transform: uppercase;
+  }
+
+  .why-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 44px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .why-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+  }
+
+  .why-text h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .why-text p {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  /* ─── PROCESS ─── */
+  #process {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 100px 80px;
+  }
+
+  #process .section-desc { margin: 0 auto 60px; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+    margin-top: 60px;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .step-circle {
+    width: 64px; height: 64px;
+    background: var(--panel);
+    border: 2px solid var(--gold-dim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .step:hover .step-circle {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .step-desc {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  /* ─── COMPLIANCE ─── */
+  #compliance {
+    background: #0d0f12;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 100px 80px;
+  }
+
+  .compliance-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .compliance-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .badge-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.3s;
+  }
+
+  .badge-card:hover { border-color: var(--gold-dim); }
+
+  .badge-icon { font-size: 28px; }
+
+  .badge-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  .badge-sub {
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .compliance-text p {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .compliance-text p strong {
+    color: var(--light);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    padding: 100px 80px;
+    background: var(--black);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    margin-top: 60px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 15px;
+    color: var(--light);
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 12px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold-dim);
+  }
+
+  .form-group select option { background: var(--panel); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    padding: 48px 80px 32px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 60px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--grey);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .footer-bottom .disclaimer {
+    max-width: 500px;
+    font-size: 11px;
+    color: var(--border);
+    line-height: 1.5;
+  }
+
+  /* ─── ALERT BANNER ─── */
+  .alert-banner {
+    background: rgba(176,42,42,0.15);
+    border: 1px solid rgba(176,42,42,0.4);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 80px;
+    margin-top: 40px;
+  }
+
+  .alert-banner .icon { font-size: 18px; }
+  .alert-banner p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #e07070;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    header { padding: 0 32px; }
+    nav { gap: 20px; }
+    section { padding: 80px 40px; }
+    .hero-content { padding: 120px 40px 80px; }
+    .hero-stats { right: 40px; }
+    #why { grid-template-columns: 1fr; padding: 80px 40px; }
+    .why-visual { height: 300px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .process-steps::before { display: none; }
+    .compliance-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    footer { padding: 40px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .alert-banner { margin: 40px 40px 0; }
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    .hero-content { padding: 100px 20px 60px; }
+    .hero-stats { display: none; }
+    section { padding: 60px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .compliance-badges { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 32px 20px; }
+    .footer-links { flex-direction: column; gap: 24px; }
+    .alert-banner { margin: 32px 20px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">GAI</div>
+    <div class="logo-text">
+      <span class="name">Ghazi Arms Industries</span>
+      <span class="tagline">Licensed Arms Transport · Since 1998</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#process">Process</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#contact" class="btn-nav">Get a Quote</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🔒 Government Licensed · Fully Compliant</div>
+    <h1>Trusted Arms<span>Transport</span></h1>
+    <p class="hero-sub">Pakistan's most reliable licensed transporter of legal arms and ammunition. Secure, documented, and compliant movement of firearms across the country.</p>
+
+    <div class="hero-route">
+      <div class="city">
+        <div class="city-name">Peshawar</div>
+        <div class="city-label">Origin · KPK</div>
+      </div>
+      <div class="route-line"></div>
+      <div class="city">
+        <div class="city-name">Karachi</div>
+        <div class="city-label">Destination · Sindh</div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Shipment</a>
+      <a href="#process" class="btn-secondary">How It Works</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10K+</div>
+      <div class="stat-label">Consignments</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Legal Compliance</div>
+    </div>
+  </div>
+</section>
+
+<div class="alert-banner">
+  <span class="icon">⚠️</span>
+  <p>We only transport <strong>legally licensed firearms and ammunition</strong>. All consignments require valid government permits, NOCs, and documentation. Unauthorized transport is strictly refused.</p>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Our Transport<br>Services</h2>
+  <p class="section-desc">Specialized logistics solutions for the licensed arms trade, designed for manufacturers, dealers, and government entities.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🔫</span>
+      <div class="service-name">Firearms Transport</div>
+      <p class="service-desc">Safe and secure transportation of licensed pistols, rifles, shotguns, and other legal firearms with full chain-of-custody documentation.</p>
+      <span class="service-tag">Rifles · Pistols · Shotguns</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💣</span>
+      <div class="service-name">Ammunition Bilti</div>
+      <p class="service-desc">Specialized handling and transport of licensed ammunition in compliance with explosive materials regulations and safety protocols.</p>
+      <span class="service-tag">Bulk · Packaged · Custom</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛡️</span>
+      <div class="service-name">Armory-to-Armory</div>
+      <p class="service-desc">Direct licensed armory transfers for registered dealers, government bodies, and security contractors with sealed escort options.</p>
+      <span class="service-tag">Dealer · Government · Security</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📋</span>
+      <div class="service-name">Documentation Support</div>
+      <p class="service-desc">Full assistance with NOC applications, transit permits, customs clearance, and all regulatory paperwork required for inter-provincial transport.</p>
+      <span class="service-tag">NOC · Permits · Customs</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📦</span>
+      <div class="service-name">Parts & Accessories</div>
+      <p class="service-desc">Transport of legal firearm parts, accessories, and maintenance equipment for registered manufacturers and dealers across Pakistan.</p>
+      <span class="service-tag">Barrels · Components · Parts</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🚐</span>
+      <div class="service-name">Escorted Delivery</div>
+      <p class="service-desc">Armed escort and specialized vehicle service for high-value or sensitive consignments requiring additional security during transit.</p>
+      <span class="service-tag">High-Value · VIP · Priority</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-visual">
+    <div class="why-card-main">
+      <div class="label">Established</div>
+      <div class="big">Since<br>1998</div>
+    </div>
+    <div class="why-card-accent">
+      <div class="num">PKL<br>001</div>
+      <div class="text">Master License<br>No.</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">Security &<br>Reliability</h2>
+    <p class="section-desc">Trusted by arms manufacturers in Darra Adam Khel and dealers across Pakistan for over two decades.</p>
+
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Fully Licensed by Government of Pakistan</h4>
+          <p>Holding all necessary federal and provincial permits for inter-provincial arms and ammunition transport under Pakistan Arms Ordinance.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>Dedicated Security Personnel</h4>
+          <p>Trained armed security staff accompany every consignment. GPS-tracked vehicles with real-time monitoring throughout transit.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>Complete Bilti Documentation</h4>
+          <p>Professionally issued consignment notes, chain-of-custody records, and delivery receipts for every shipment — audit-ready at all times.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <h4>Peshawar–Karachi Route Specialists</h4>
+          <p>Deep knowledge of checkpoints, regulations, and logistics across the full Peshawar–Karachi corridor with 25+ years of experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">The Bilti Process</h2>
+  <p class="section-desc">A streamlined, legally compliant process from documentation to delivery — every step tracked and verified.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-circle">01</div>
+      <div class="step-title">Submit Request</div>
+      <p class="step-desc">Contact us with your consignment details, quantity, and destination.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">02</div>
+      <div class="step-title">Document Verification</div>
+      <p class="step-desc">We verify all licenses, NOCs, and permits before accepting the consignment.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">03</div>
+      <div class="step-title">Bilti Issued</div>
+      <p class="step-desc">Official consignment note issued with all details and tracking reference.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">04</div>
+      <div class="step-title">Secure Transit</div>
+      <p class="step-desc">GPS-tracked, escorted transport from Peshawar to Karachi with checkpoint clearances.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">05</div>
+      <div class="step-title">Confirmed Delivery</div>
+      <p class="step-desc">Signed delivery receipt, handover documentation and consignment closed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance">
+  <div class="compliance-inner">
+    <div>
+      <div class="section-label">Legal & Compliance</div>
+      <h2 class="section-title">Fully<br>Compliant</h2>
+
+      <div class="compliance-badges">
+        <div class="badge-card">
+          <span class="badge-icon">📜</span>
+          <div class="badge-title">Arms Ordinance 1965</div>
+          <div class="badge-sub">Full compliance with Pakistan Arms Ordinance regulations</div>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">🏛️</span>
+          <div class="badge-title">Interior Ministry NOC</div>
+          <div class="badge-sub">Federal transport license from Ministry of Interior</div>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">🚔</span>
+          <div class="badge-title">Police Clearance</div>
+          <div class="badge-sub">KPK & Sindh police verified transport operator</div>
+        </div>
+        <div class="badge-card">
+          <span class="badge-icon">📊</span>
+          <div class="badge-title">FBR Registered</div>
+          <div class="badge-sub">NTN registered, tax compliant transport company</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="compliance-text">
+      <p><strong>Strict Legal Framework:</strong> Ghazi Arms Industries operates exclusively within the legal framework established by the Pakistan Arms Ordinance, 1965, and all subsequent amendments. We do not accept consignments without valid documentation.</p>
+      <p><strong>Required Documentation:</strong> All clients must provide a valid arms dealer/manufacturer license, transit permit, destination NOC, and consignee's valid license before any transport is arranged.</p>
+      <p><strong>Zero Tolerance Policy:</strong> We maintain a strict zero-tolerance policy for unlicensed, undeclared, or improperly documented consignments. Any suspicious request is immediately reported to relevant authorities.</p>
+      <p><strong>Regular Audits:</strong> Our operations are subject to regular audits by federal and provincial authorities. All records are maintained for a minimum of 7 years in compliance with regulatory requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Book a<br>Consignment</h2>
+  <p class="section-desc">For shipment inquiries, documentation assistance, or general questions — reach out to our team in Peshawar.</p>
+
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Head Office</div>
+          <div class="contact-value">Transport Adda, Ring Road<br>Peshawar, Khyber Pakhtunkhwa</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone / WhatsApp</div>
+          <div class="contact-value">+92 91 XXX XXXX<br>+92 300 XXX XXXX</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">info@ghaziarmsind.pk<br>transport@ghaziarmsind.pk</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Office Hours</div>
+          <div class="contact-value">Monday – Saturday<br>9:00 AM – 6:00 PM PKT</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏢</div>
+        <div>
+          <div class="contact-label">Karachi Office</div>
+          <div class="contact-value">Keamari, Port Qasim Area<br>Karachi, Sindh</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label>Company / Business</label>
+          <input type="text" placeholder="Your business name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+92 300 0000000" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Type of Consignment</label>
+        <select>
+          <option value="">Select consignment type...</option>
+          <option>Licensed Firearms (Rifles/Pistols)</option>
+          <option>Ammunition (Boxed/Bulk)</option>
+          <option>Firearm Parts & Accessories</option>
+          <option>Mixed Consignment</option>
+          <option>Other (Specify in message)</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Estimated Weight (KG)</label>
+          <input type="number" placeholder="e.g. 150">
+        </div>
+        <div class="form-group">
+          <label>Preferred Dispatch Date</label>
+          <input type="date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message / Additional Details</label>
+        <textarea placeholder="Describe your consignment, license details, special requirements..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-size:15px;">
+        Submit Inquiry →
+      </button>
+      <p style="font-size:11px; color:var(--grey); text-align:center; margin-top:8px;">
+        ⚠️ All inquiries require valid license documentation before any transport is arranged.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="logo">
+      <div class="logo-icon">GAI</div>
+      <div class="logo-text">
+        <span class="name">Ghazi Arms Industries</span>
+        <span class="tagline">Licensed Arms Transport · Peshawar</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="#services">Firearms Transport</a>
+        <a href="#services">Ammunition Bilti</a>
+        <a href="#services">Escorted Delivery</a>
+        <a href="#services">Documentation</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#why">About Us</a>
+        <a href="#compliance">Compliance</a>
+        <a href="#process">Our Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Licensing Info</a>
+        <a href="#">Report Misuse</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Ghazi Arms Industries. All rights reserved. Peshawar, KPK, Pakistan.</span>
+    <p class="disclaimer">This company is a licensed arms transporter operating under the laws of Pakistan. All services require valid government-issued permits and documentation. Unauthorized transport of arms is illegal.</p>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Inquiry Submitted — We will contact you shortly';
+    btn.style.background = '#2a6630';
+    btn.disabled = true;
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Fade in elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .step, .badge-card, .why-item, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

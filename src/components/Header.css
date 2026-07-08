@@ -1,0 +1,223 @@
+/* ─── HEADER ─── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  animation: slideInLeft 0.6s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  animation: slideInLeft 0.6s ease;
+}
+
+.logo:hover .logo-image {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.logo-image {
+  height: 50px;
+  width: auto;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--gold);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  color: var(--black);
+  flex-shrink: 0;
+  animation: pulse 3s infinite;
+  display: none;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text .name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.logo-text .tagline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--grey);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+  padding: 0;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.35);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: var(--white);
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.2);
+}
+
+.btn-nav {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--black) !important;
+  padding: 10px 24px !important;
+  font-weight: 700 !important;
+  transition: background 0.25s ease, transform 0.25s ease !important;
+  border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(201, 168, 76, 0.2);
+}
+
+.btn-nav:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold)) !important;
+  color: var(--black) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(201, 168, 76, 0.28);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 32px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 50;
+  }
+
+  .nav.mobile-open {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .btn-nav {
+    margin-top: 10px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  .logo-text .name {
+    font-size: 18px;
+  }
+
+  .logo-text .tagline {
+    font-size: 8px;
+  }
+}

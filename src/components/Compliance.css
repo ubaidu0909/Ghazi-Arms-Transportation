@@ -1,0 +1,153 @@
+/* ─── COMPLIANCE ─── */
+.compliance-section {
+  background: #0d0f12;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.compliance-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.compliance-left {
+  animation: slideInLeft 0.8s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 32px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.2);
+}
+
+.compliance-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.badge-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border-radius: 24px;
+  animation: scaleIn 0.6s ease both;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.badge-card:hover {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 28px 70px rgba(201, 168, 76, 0.18);
+}
+
+.badge-card:hover {
+  border-color: var(--gold-dim);
+  background: rgba(22, 26, 31, 0.8);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(201, 168, 76, 0.15);
+}
+
+.badge-icon {
+  font-size: 28px;
+  display: inline-block;
+  width: max-content;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.badge-card:hover .badge-icon {
+  transform: translateY(-2px);
+  color: var(--gold);
+}
+
+.badge-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.badge-sub {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.5;
+}
+
+.compliance-text {
+  animation: slideInRight 0.8s ease;
+}
+
+.compliance-text p {
+  font-size: 15px;
+  color: var(--grey);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  margin: 0 0 20px 0;
+}
+
+.compliance-text p strong {
+  color: var(--light);
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 8px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .compliance-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .compliance-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .badge-card {
+    padding: 20px;
+  }
+
+  .compliance-text p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .compliance-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-card {
+    padding: 16px;
+  }
+
+  .badge-icon {
+    font-size: 24px;
+  }
+
+  .badge-title {
+    font-size: 13px;
+  }
+
+  .badge-sub {
+    font-size: 11px;
+  }
+
+  .compliance-text p {
+    font-size: 13px;
+  }
+}

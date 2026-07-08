@@ -1,0 +1,49 @@
+.alert-banner {
+  background: rgba(176, 42, 42, 0.15);
+  border: 1px solid rgba(176, 42, 42, 0.4);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 80px;
+  margin-top: 40px;
+  animation: slideInLeft 0.8s ease;
+  border-radius: 4px;
+}
+
+.alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+.alert-banner p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #e07070;
+  margin: 0;
+}
+
+.alert-banner strong {
+  color: #ff8888;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .alert-banner {
+    margin: 40px 40px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .alert-banner {
+    margin: 32px 20px 0;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .alert-banner p {
+    font-size: 11px;
+  }
+}
